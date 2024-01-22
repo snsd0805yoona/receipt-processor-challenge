@@ -13,6 +13,6 @@ public class ReceiptRequestVO {
     private LocalDate purchaseDate;
     @Pattern(regexp = "^(?:[01]\\d|2[0-3]):[0-5]\\d$", message = "Please enter valid time format, ex: 01:01")
     private String purchaseTime;
-    private Double total;
+    private String total;
     private List<ItemDTO> items;
 }

@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class ItemDTO {
     private String shortDescription;
-    private Double price;
+    private String price;
 }
