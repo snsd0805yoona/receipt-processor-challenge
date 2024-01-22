@@ -1,6 +1,8 @@
 package com.grace.receiptprocessor.controller;
 
 import com.grace.receiptprocessor.common.ApiResponse;
+import com.grace.receiptprocessor.common.enums.Status;
+import com.grace.receiptprocessor.common.exception.IdNotFoundException;
 import com.grace.receiptprocessor.common.vo.PointResponseVO;
 import com.grace.receiptprocessor.common.vo.ReceiptRequestVO;
 import com.grace.receiptprocessor.common.vo.ReceiptResponseVO;
@@ -24,6 +26,11 @@ public class ReceiptController {
 
     @GetMapping("/{id}/points")
     public ApiResponse<PointResponseVO> getPoints(@PathVariable String id) {
-        return ApiResponse.success(receiptService.getPoints(id));
+        try {
+            PointResponseVO result = receiptService.getPoints(id);
+            return ApiResponse.success(result);
+        } catch (IdNotFoundException e) {
+            return ApiResponse.error(Status.getStatusEnumByStatus(e.getCode()), e.getMessage());
+        }
     }
 }

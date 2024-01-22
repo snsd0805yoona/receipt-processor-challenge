@@ -2,6 +2,8 @@ package com.grace.receiptprocessor.service;
 
 import com.grace.receiptprocessor.common.dto.ItemDTO;
 import com.grace.receiptprocessor.common.entity.Receipt;
+import com.grace.receiptprocessor.common.enums.Status;
+import com.grace.receiptprocessor.common.exception.IdNotFoundException;
 import com.grace.receiptprocessor.common.vo.PointResponseVO;
 import com.grace.receiptprocessor.common.vo.ReceiptRequestVO;
 import com.grace.receiptprocessor.common.vo.ReceiptResponseVO;
@@ -77,9 +79,9 @@ public class ReceiptServiceImpl implements IReceiptService {
 
             return PointResponseVO.builder().points(points).build();
         } else {
-            log.info("This id does not exist");
+            log.info("id {} does not exist", id);
+            throw new IdNotFoundException(Status.ID_NOT_FOUND);
         }
-        return null;
     }
 
 

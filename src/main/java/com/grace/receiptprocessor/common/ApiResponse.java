@@ -1,5 +1,6 @@
 package com.grace.receiptprocessor.common;
 
+import com.grace.receiptprocessor.common.enums.Status;
 import io.micrometer.common.util.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
@@ -74,6 +75,16 @@ public class ApiResponse<T> implements Serializable {
 
         apiResponse.setSuccess(Boolean.FALSE);
         apiResponse.setStatusCode(httpStatus.value());
+        apiResponse.setMessage(message);
+
+        return apiResponse;
+    }
+
+    public static ApiResponse error(Status status, String message) {
+        ApiResponse apiResponse = new ApiResponse();
+
+        apiResponse.setSuccess(Boolean.FALSE);
+        apiResponse.setStatusCode(status.getCode());
         apiResponse.setMessage(message);
 
         return apiResponse;
