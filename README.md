@@ -17,5 +17,6 @@ When you see `Started ReceiptProcessorApplication in 1.072 seconds `, that means
 
 ### Step 3: Test in Swagger
 Open `http://localhost:3007/swagger-ui/index.html#/` in your browser, and you will see two api endpoints in the list.
+Click on try it out!
 
 Now you can start to play with it!
